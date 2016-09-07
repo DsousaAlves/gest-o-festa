@@ -10,27 +10,25 @@ import com.dsousa.gestaoFesta.model.Convidado;
 import com.dsousa.gestaoFesta.model.Convidados;
 
 @Controller
+@RequestMapping("/convidados")
 public class ConvidadosController {
-	
+
 	@Autowired
 	Convidados convidados;
-	
-	
-	@RequestMapping("/convidados")
-	public ModelAndView listar(){
+
+	@RequestMapping()
+	public ModelAndView listar() {
 		ModelAndView mv = new ModelAndView("listaConvidados");
 		mv.addObject(new Convidado());
 		mv.addObject("convidados", convidados.todos());
 		return mv;
 	}
-	
-	@RequestMapping(value = "/convidados", method = RequestMethod.POST)
-	public String salvar(Convidado convidado){
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String salvar(Convidado convidado) {
 		this.convidados.adicionar(convidado);
-		
 		return "redirect:/convidados";
-	
+
 	}
-	
-	
+
 }
