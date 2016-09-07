@@ -16,7 +16,23 @@
 			<h1 class="panel-title">Lista de convidados</h1>
 		</div>
 		<div class="panel-body">
+
+			<form class="form-inline" method="POST" th:object="${convidado}"
+								style="margin: 20px 0" th:action="@{/convidados}">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" /> 
+					
+					<input type="text" 
+						class="form-control" placeholder="Acompanhantes" 
+						th:field="*{qtdAcompanhantes}" />
+						
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+
+			</form>
+
 			<table class="table">
+
 				<thead>
 					<tr>
 						<th>Nome</th>
